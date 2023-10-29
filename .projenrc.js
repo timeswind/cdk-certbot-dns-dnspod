@@ -15,8 +15,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
     cdkv1: { npmDistTag: 'cdkv1', majorVersion: 1 },
   },
   defaultReleaseBranch: 'main',
-  name: 'cdk-certbot-dns-route53',
-  repositoryUrl: 'https://github.com/neilkuan/cdk-certbot-dns-route53.git',
+  name: 'cdk-certbot-dns-dnspod',
+  repositoryUrl: 'https://github.com/timeswind/cdk-certbot-dns-dnspod.git',
   description: 'Create Cron Job Via Lambda, to update certificate and put it to S3 Bucket.',
   keywords: ['aws', 'cdk', 'certbot'],
   depsUpgradeOptions: {
@@ -30,7 +30,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     allowedUsernames: ['neilkuan'],
   },
   publishToPypi: {
-    distName: 'cdk-certbot-dns-route53',
+    distName: 'cdk-certbot-dns-dnspod',
     module: 'cdk_certbot_dns_route53',
   },
   catalog: {

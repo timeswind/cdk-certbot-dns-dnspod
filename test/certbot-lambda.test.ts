@@ -10,8 +10,8 @@ const devEnv = {
 };
 
 const mock = {
-  dns_dnspod_api_id: 'XXXXXXXXXXXXX',
-  dns_dnspod_api_token: 'XXXXXXXXXXXXX',
+  dnsDnspodApiId: 'XXXXXXXXXXXXX',
+  dnsDnspodApiToken: 'XXXXXXXXXXXXX',
 };
 
 test('only create certbot lambda.', () => {
@@ -24,8 +24,8 @@ test('only create certbot lambda.', () => {
       domainName: 'example.com',
       email: 'user@example.com',
     },
-    dns_dnspod_api_id: mock.dns_dnspod_api_id,
-    dns_dnspod_api_token: mock.dns_dnspod_api_token,
+    dnsDnspodApiId: mock.dnsDnspodApiId,
+    dnsDnspodApiToken: mock.dnsDnspodApiToken,
     destinationBucket: bucket,
   });
   assertions.Template.fromStack(stack).hasResourceProperties('AWS::Lambda::Function', {
@@ -67,8 +67,8 @@ test('create certbot lambda schedule rule.', () => {
       domainName: 'example.com',
       email: 'user@example.com',
     },
-    dns_dnspod_api_id: mock.dns_dnspod_api_id,
-    dns_dnspod_api_token: mock.dns_dnspod_api_token,
+    dnsDnspodApiId: mock.dnsDnspodApiId,
+    dnsDnspodApiToken: mock.dnsDnspodApiToken,
     destinationBucket: bucket,
     schedule: events.Schedule.cron({ month: '2' }),
   });
@@ -127,8 +127,8 @@ test('test right customPrefixDirectory.', () => {
       email: 'user@example.com',
       customPrefixDirectory: 'abc',
     },
-    dns_dnspod_api_id: mock.dns_dnspod_api_id,
-    dns_dnspod_api_token: mock.dns_dnspod_api_token,
+    dnsDnspodApiId: mock.dnsDnspodApiId,
+    dnsDnspodApiToken: mock.dnsDnspodApiToken,
     destinationBucket: bucket,
     schedule: events.Schedule.cron({ month: '2' }),
   });
@@ -157,8 +157,8 @@ test('test right / path customPrefixDirectory.', () => {
       email: 'user@example.com',
       customPrefixDirectory: '/',
     },
-    dns_dnspod_api_id: mock.dns_dnspod_api_id,
-    dns_dnspod_api_token: mock.dns_dnspod_api_token,
+    dnsDnspodApiId: mock.dnsDnspodApiId,
+    dnsDnspodApiToken: mock.dnsDnspodApiToken,
     destinationBucket: bucket,
     schedule: events.Schedule.cron({ month: '2' }),
   });
@@ -187,8 +187,8 @@ test('test define right Lambda Image Architecture x86_64', () => {
       email: 'user@example.com',
       customPrefixDirectory: '/',
     },
-    dns_dnspod_api_id: mock.dns_dnspod_api_id,
-    dns_dnspod_api_token: mock.dns_dnspod_api_token,
+    dnsDnspodApiId: mock.dnsDnspodApiId,
+    dnsDnspodApiToken: mock.dnsDnspodApiToken,
     destinationBucket: bucket,
     schedule: events.Schedule.cron({ month: '2' }),
     architecture: lambda.Architecture.X86_64,
@@ -221,8 +221,8 @@ test('test define right Lambda Image Architecture arm64', () => {
       email: 'user@example.com',
       customPrefixDirectory: '/',
     },
-    dns_dnspod_api_id: mock.dns_dnspod_api_id,
-    dns_dnspod_api_token: mock.dns_dnspod_api_token,
+    dnsDnspodApiId: mock.dnsDnspodApiId,
+    dnsDnspodApiToken: mock.dnsDnspodApiToken,
     destinationBucket: bucket,
     schedule: events.Schedule.cron({ month: '2' }),
     architecture: lambda.Architecture.ARM_64,

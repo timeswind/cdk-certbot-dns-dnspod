@@ -13,8 +13,8 @@ elif [ -z "$DNS_DNSPOD_API_TOKEN"]; then
 fi    
 
 # create credentials.ini in /tmp directory
-echo "dns_dnspod_api_id = $DNS_DNSPOD_API_ID" > /tmp/credentials.ini
-echo "dns_dnspod_api_token = $DNS_DNSPOD_API_TOKEN" >> /tmp/credentials.ini
+echo "dnsDnspodApiId = $DNS_DNSPOD_API_ID" > /tmp/credentials.ini
+echo "dnsDnspodApiToken = $DNS_DNSPOD_API_TOKEN" >> /tmp/credentials.ini
 
 certbot certonly --agree-tos \
 --dns-dnspod \

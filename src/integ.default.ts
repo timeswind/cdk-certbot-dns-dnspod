@@ -18,8 +18,8 @@ new CertbotDnsDnspodJob(stack, 'Demo', {
     email: stack.node.tryGetContext('EMAIL') ?? 'user@example.com',
     customPrefixDirectory: '/',
   },
-  dns_dnspod_api_id: stack.node.tryGetContext('DNS_DNSPOD_API_ID') ?? 'mockId',
-  dns_dnspod_api_token: stack.node.tryGetContext('DNS_DNSPOD_API_TOKEN') ?? 'mockToken',
+  dnsDnspodApiId: stack.node.tryGetContext('DNS_DNSPOD_API_ID') ?? 'mockId',
+  dnsDnspodApiToken: stack.node.tryGetContext('DNS_DNSPOD_API_TOKEN') ?? 'mockToken',
   destinationBucket: s3.Bucket.fromBucketName(stack, 'myBucket', stack.node.tryGetContext('BUCKETNAME') ?? 'mybucket'),
   architecture: lambda.Architecture.X86_64,
 });

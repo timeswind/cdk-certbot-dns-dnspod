@@ -3,7 +3,7 @@
   "description": "Create Cron Job Via Lambda, to update certificate and put it to S3 Bucket.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/timeswind/cdk-certbot-dns-dnspod"
+    "url": "https://github.com/timeswind/cdk-certbot-dns-dnspod.git"
   },
   "scripts": {
     "build": "npx projen build",
@@ -123,7 +123,7 @@
     "targets": {
       "python": {
         "distName": "cdk-certbot-dns-dnspod",
-        "module": "cdk_certbot_dns_dnspod"
+        "module": "cdk_certbot_dns_route53"
       }
     },
     "tsc": {

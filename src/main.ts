@@ -46,8 +46,8 @@ export interface CertbotDnsDnspodJobProps {
   /**
    * The dnspod api id and token.
    */
-  readonly dns_dnspod_api_id: string;
-  readonly dns_dnspod_api_token: string;
+  readonly dnsDnspodApiId: string;
+  readonly dnsDnspodApiToken: string;
 
   /**
    * certbot cmd options.
@@ -70,8 +70,8 @@ export class CertbotDnsDnspodJob extends Construct {
       EMAIL: props.certbotOptions.email,
       DOMAIN_NAME: props.certbotOptions.domainName,
       CUSTOM_PREFIX_DIRECTORY: props.certbotOptions.customPrefixDirectory!,
-      DNS_DNSPOD_API_ID: props.dns_dnspod_api_id,
-      DNS_DNSPOD_API_TOKEN: props.dns_dnspod_api_token,
+      DNS_DNSPOD_API_ID: props.dnsDnspodApiId,
+      DNS_DNSPOD_API_TOKEN: props.dnsDnspodApiToken,
     };
 
     const lambdaFun = new BashExecFunction(this, 'certbotDnsDnspodJobLambda', {

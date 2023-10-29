@@ -2,31 +2,31 @@
 
 ## Constructs <a name="Constructs"></a>
 
-### BashExecFunction <a name="cdk-certbot-dns-route53.BashExecFunction"></a>
+### BashExecFunction <a name="cdk-certbot-dns-dnspod.BashExecFunction"></a>
 
-#### Initializers <a name="cdk-certbot-dns-route53.BashExecFunction.Initializer"></a>
+#### Initializers <a name="cdk-certbot-dns-dnspod.BashExecFunction.Initializer"></a>
 
 ```typescript
-import { BashExecFunction } from 'cdk-certbot-dns-route53'
+import { BashExecFunction } from 'cdk-certbot-dns-dnspod'
 
 new BashExecFunction(scope: Construct, id: string, props: BashExecFunctionProps)
 ```
 
-##### `scope`<sup>Required</sup> <a name="cdk-certbot-dns-route53.BashExecFunction.parameter.scope"></a>
+##### `scope`<sup>Required</sup> <a name="cdk-certbot-dns-dnspod.BashExecFunction.parameter.scope"></a>
 
 - *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
-##### `id`<sup>Required</sup> <a name="cdk-certbot-dns-route53.BashExecFunction.parameter.id"></a>
+##### `id`<sup>Required</sup> <a name="cdk-certbot-dns-dnspod.BashExecFunction.parameter.id"></a>
 
 - *Type:* `string`
 
 ---
 
-##### `props`<sup>Required</sup> <a name="cdk-certbot-dns-route53.BashExecFunction.parameter.props"></a>
+##### `props`<sup>Required</sup> <a name="cdk-certbot-dns-dnspod.BashExecFunction.parameter.props"></a>
 
-- *Type:* [`cdk-certbot-dns-route53.BashExecFunctionProps`](#cdk-certbot-dns-route53.BashExecFunctionProps)
+- *Type:* [`cdk-certbot-dns-dnspod.BashExecFunctionProps`](#cdk-certbot-dns-dnspod.BashExecFunctionProps)
 
 ---
 
@@ -34,7 +34,7 @@ new BashExecFunction(scope: Construct, id: string, props: BashExecFunctionProps)
 
 #### Properties <a name="Properties"></a>
 
-##### `handler`<sup>Required</sup> <a name="cdk-certbot-dns-route53.BashExecFunction.property.handler"></a>
+##### `handler`<sup>Required</sup> <a name="cdk-certbot-dns-dnspod.BashExecFunction.property.handler"></a>
 
 ```typescript
 public readonly handler: DockerImageFunction;
@@ -45,31 +45,31 @@ public readonly handler: DockerImageFunction;
 ---
 
 
-### CertbotDnsRoute53Job <a name="cdk-certbot-dns-route53.CertbotDnsRoute53Job"></a>
+### CertbotDnsDnspodJob <a name="cdk-certbot-dns-dnspod.CertbotDnsDnspodJob"></a>
 
-#### Initializers <a name="cdk-certbot-dns-route53.CertbotDnsRoute53Job.Initializer"></a>
+#### Initializers <a name="cdk-certbot-dns-dnspod.CertbotDnsDnspodJob.Initializer"></a>
 
 ```typescript
-import { CertbotDnsRoute53Job } from 'cdk-certbot-dns-route53'
+import { CertbotDnsDnspodJob } from 'cdk-certbot-dns-dnspod'
 
-new CertbotDnsRoute53Job(scope: Construct, id: string, props: CertbotDnsRoute53JobProps)
+new CertbotDnsDnspodJob(scope: Construct, id: string, props: CertbotDnsDnspodJobProps)
 ```
 
-##### `scope`<sup>Required</sup> <a name="cdk-certbot-dns-route53.CertbotDnsRoute53Job.parameter.scope"></a>
+##### `scope`<sup>Required</sup> <a name="cdk-certbot-dns-dnspod.CertbotDnsDnspodJob.parameter.scope"></a>
 
 - *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
-##### `id`<sup>Required</sup> <a name="cdk-certbot-dns-route53.CertbotDnsRoute53Job.parameter.id"></a>
+##### `id`<sup>Required</sup> <a name="cdk-certbot-dns-dnspod.CertbotDnsDnspodJob.parameter.id"></a>
 
 - *Type:* `string`
 
 ---
 
-##### `props`<sup>Required</sup> <a name="cdk-certbot-dns-route53.CertbotDnsRoute53Job.parameter.props"></a>
+##### `props`<sup>Required</sup> <a name="cdk-certbot-dns-dnspod.CertbotDnsDnspodJob.parameter.props"></a>
 
-- *Type:* [`cdk-certbot-dns-route53.CertbotDnsRoute53JobProps`](#cdk-certbot-dns-route53.CertbotDnsRoute53JobProps)
+- *Type:* [`cdk-certbot-dns-dnspod.CertbotDnsDnspodJobProps`](#cdk-certbot-dns-dnspod.CertbotDnsDnspodJobProps)
 
 ---
 
@@ -79,17 +79,17 @@ new CertbotDnsRoute53Job(scope: Construct, id: string, props: CertbotDnsRoute53J
 
 ## Structs <a name="Structs"></a>
 
-### BashExecFunctionProps <a name="cdk-certbot-dns-route53.BashExecFunctionProps"></a>
+### BashExecFunctionProps <a name="cdk-certbot-dns-dnspod.BashExecFunctionProps"></a>
 
 #### Initializer <a name="[object Object].Initializer"></a>
 
 ```typescript
-import { BashExecFunctionProps } from 'cdk-certbot-dns-route53'
+import { BashExecFunctionProps } from 'cdk-certbot-dns-dnspod'
 
 const bashExecFunctionProps: BashExecFunctionProps = { ... }
 ```
 
-##### `script`<sup>Required</sup> <a name="cdk-certbot-dns-route53.BashExecFunctionProps.property.script"></a>
+##### `script`<sup>Required</sup> <a name="cdk-certbot-dns-dnspod.BashExecFunctionProps.property.script"></a>
 
 ```typescript
 public readonly script: string;
@@ -101,7 +101,7 @@ The path of the shell script to be executed.
 
 ---
 
-##### `architecture`<sup>Optional</sup> <a name="cdk-certbot-dns-route53.BashExecFunctionProps.property.architecture"></a>
+##### `architecture`<sup>Optional</sup> <a name="cdk-certbot-dns-dnspod.BashExecFunctionProps.property.architecture"></a>
 
 ```typescript
 public readonly architecture: Architecture;
@@ -114,7 +114,7 @@ Custom lambda Image Architecture.
 
 ---
 
-##### `dockerfile`<sup>Optional</sup> <a name="cdk-certbot-dns-route53.BashExecFunctionProps.property.dockerfile"></a>
+##### `dockerfile`<sup>Optional</sup> <a name="cdk-certbot-dns-dnspod.BashExecFunctionProps.property.dockerfile"></a>
 
 ```typescript
 public readonly dockerfile: string;
@@ -126,7 +126,7 @@ The path of your custom dockerfile.
 
 ---
 
-##### `environment`<sup>Optional</sup> <a name="cdk-certbot-dns-route53.BashExecFunctionProps.property.environment"></a>
+##### `environment`<sup>Optional</sup> <a name="cdk-certbot-dns-dnspod.BashExecFunctionProps.property.environment"></a>
 
 ```typescript
 public readonly environment: {[ key: string ]: string};
@@ -138,7 +138,7 @@ Lambda environment variables.
 
 ---
 
-##### `role`<sup>Optional</sup> <a name="cdk-certbot-dns-route53.BashExecFunctionProps.property.role"></a>
+##### `role`<sup>Optional</sup> <a name="cdk-certbot-dns-dnspod.BashExecFunctionProps.property.role"></a>
 
 ```typescript
 public readonly role: IRole;
@@ -151,7 +151,7 @@ Custom lambda execution role.
 
 ---
 
-##### `timeout`<sup>Optional</sup> <a name="cdk-certbot-dns-route53.BashExecFunctionProps.property.timeout"></a>
+##### `timeout`<sup>Optional</sup> <a name="cdk-certbot-dns-dnspod.BashExecFunctionProps.property.timeout"></a>
 
 ```typescript
 public readonly timeout: Duration;
@@ -166,29 +166,29 @@ Because the execution time affects cost, set this value based on the function's 
 
 ---
 
-### CertbotDnsRoute53JobProps <a name="cdk-certbot-dns-route53.CertbotDnsRoute53JobProps"></a>
+### CertbotDnsDnspodJobProps <a name="cdk-certbot-dns-dnspod.CertbotDnsDnspodJobProps"></a>
 
 #### Initializer <a name="[object Object].Initializer"></a>
 
 ```typescript
-import { CertbotDnsRoute53JobProps } from 'cdk-certbot-dns-route53'
+import { CertbotDnsDnspodJobProps } from 'cdk-certbot-dns-dnspod'
 
-const certbotDnsRoute53JobProps: CertbotDnsRoute53JobProps = { ... }
+const certbotDnsDnspodJobProps: CertbotDnsDnspodJobProps = { ... }
 ```
 
-##### `certbotOptions`<sup>Required</sup> <a name="cdk-certbot-dns-route53.CertbotDnsRoute53JobProps.property.certbotOptions"></a>
+##### `certbotOptions`<sup>Required</sup> <a name="cdk-certbot-dns-dnspod.CertbotDnsDnspodJobProps.property.certbotOptions"></a>
 
 ```typescript
 public readonly certbotOptions: CertbotOptions;
 ```
 
-- *Type:* [`cdk-certbot-dns-route53.CertbotOptions`](#cdk-certbot-dns-route53.CertbotOptions)
+- *Type:* [`cdk-certbot-dns-dnspod.CertbotOptions`](#cdk-certbot-dns-dnspod.CertbotOptions)
 
 certbot cmd options.
 
 ---
 
-##### `destinationBucket`<sup>Required</sup> <a name="cdk-certbot-dns-route53.CertbotDnsRoute53JobProps.property.destinationBucket"></a>
+##### `destinationBucket`<sup>Required</sup> <a name="cdk-certbot-dns-dnspod.CertbotDnsDnspodJobProps.property.destinationBucket"></a>
 
 ```typescript
 public readonly destinationBucket: IBucket;
@@ -200,19 +200,29 @@ The S3 bucket to store certificate.
 
 ---
 
-##### `zone`<sup>Required</sup> <a name="cdk-certbot-dns-route53.CertbotDnsRoute53JobProps.property.zone"></a>
+##### `dnsDnspodApiId`<sup>Required</sup> <a name="cdk-certbot-dns-dnspod.CertbotDnsDnspodJobProps.property.dnsDnspodApiId"></a>
 
 ```typescript
-public readonly zone: IHostedZone;
+public readonly dnsDnspodApiId: string;
 ```
 
-- *Type:* [`aws-cdk-lib.aws_route53.IHostedZone`](#aws-cdk-lib.aws_route53.IHostedZone)
+- *Type:* `string`
 
-The HostZone on route53 to dns-01 challenge.
+The dnspod api id and token.
 
 ---
 
-##### `architecture`<sup>Optional</sup> <a name="cdk-certbot-dns-route53.CertbotDnsRoute53JobProps.property.architecture"></a>
+##### `dnsDnspodApiToken`<sup>Required</sup> <a name="cdk-certbot-dns-dnspod.CertbotDnsDnspodJobProps.property.dnsDnspodApiToken"></a>
+
+```typescript
+public readonly dnsDnspodApiToken: string;
+```
+
+- *Type:* `string`
+
+---
+
+##### `architecture`<sup>Optional</sup> <a name="cdk-certbot-dns-dnspod.CertbotDnsDnspodJobProps.property.architecture"></a>
 
 ```typescript
 public readonly architecture: Architecture;
@@ -225,7 +235,7 @@ Custom lambda Image Architecture.
 
 ---
 
-##### `schedule`<sup>Optional</sup> <a name="cdk-certbot-dns-route53.CertbotDnsRoute53JobProps.property.schedule"></a>
+##### `schedule`<sup>Optional</sup> <a name="cdk-certbot-dns-dnspod.CertbotDnsDnspodJobProps.property.schedule"></a>
 
 ```typescript
 public readonly schedule: Schedule;
@@ -238,17 +248,17 @@ run the Job with defined schedule.
 
 ---
 
-### CertbotOptions <a name="cdk-certbot-dns-route53.CertbotOptions"></a>
+### CertbotOptions <a name="cdk-certbot-dns-dnspod.CertbotOptions"></a>
 
 #### Initializer <a name="[object Object].Initializer"></a>
 
 ```typescript
-import { CertbotOptions } from 'cdk-certbot-dns-route53'
+import { CertbotOptions } from 'cdk-certbot-dns-dnspod'
 
 const certbotOptions: CertbotOptions = { ... }
 ```
 
-##### `domainName`<sup>Required</sup> <a name="cdk-certbot-dns-route53.CertbotOptions.property.domainName"></a>
+##### `domainName`<sup>Required</sup> <a name="cdk-certbot-dns-dnspod.CertbotOptions.property.domainName"></a>
 
 ```typescript
 public readonly domainName: string;
@@ -260,7 +270,7 @@ the domain must host on route53 like example.com.
 
 ---
 
-##### `email`<sup>Required</sup> <a name="cdk-certbot-dns-route53.CertbotOptions.property.email"></a>
+##### `email`<sup>Required</sup> <a name="cdk-certbot-dns-dnspod.CertbotOptions.property.email"></a>
 
 ```typescript
 public readonly email: string;
@@ -272,7 +282,7 @@ Email address for important account notifications.
 
 ---
 
-##### `customPrefixDirectory`<sup>Optional</sup> <a name="cdk-certbot-dns-route53.CertbotOptions.property.customPrefixDirectory"></a>
+##### `customPrefixDirectory`<sup>Optional</sup> <a name="cdk-certbot-dns-dnspod.CertbotOptions.property.customPrefixDirectory"></a>
 
 ```typescript
 public readonly customPrefixDirectory: string;
