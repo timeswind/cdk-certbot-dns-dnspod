@@ -2,9 +2,9 @@
 DOMAIN_NAME=$DOMAIN_NAME
 MAIL=$EMAIL
 
-echo "start to renew cert from route53"
+echo "start to renew cert from dnspod"
 certbot certonly --agree-tos \
---dns-route53 \
+-a dns-dnspod --dns-dnspod-credentials /tmp/credentials.ini \
 -d ${DOMAIN_NAME} -m ${MAIL} --no-eff-email --config-dir /tmp --work-dir /tmp --logs-dir /tmp
 sleep 30
 TODAY=$(date +"%Y-%m-%d")
