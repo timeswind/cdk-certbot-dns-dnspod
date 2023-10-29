@@ -2,25 +2,13 @@
 DOMAIN_NAME=$DOMAIN_NAME
 MAIL=$EMAIL
 
-echo "start to renew cert from dnspod"
-
-if [ -z "$DNS_DNSPOD_API_ID" ]; then
-    echo "DNS_DNSPOD_API_ID is not set"
-    exit 1
-elif [ -z "$DNS_DNSPOD_API_TOKEN"]; then
-    echo "DNS_DNSPOD_API_TOKEN is not set"
-    exit 1
-fi    
+echo "start to renew cert from dnspod" 
 
 # create credentials.ini in /tmp directory
 echo "dnsDnspodApiId = $DNS_DNSPOD_API_ID" > /tmp/credentials.ini
 echo "dnsDnspodApiToken = $DNS_DNSPOD_API_TOKEN" >> /tmp/credentials.ini
 
-certbot certonly --agree-tos \
---dns-dnspod \
---dns-dnspod-credentials /tmp/credentials.ini \
---dns-dnspod-propagation-seconds 30 \
--d ${DOMAIN_NAME} -m ${MAIL} --no-eff-email --config-dir /tmp --work-dir /tmp --logs-dir /tmp
+certbot certonly --agree-tos -a dns-dnspod --dns-dnspod-credentials /tmp/credentials.ini --dns-dnspod-propagation-seconds 30 -d ${DOMAIN_NAME} -m ${MAIL} --no-eff-email --config-dir /tmp --work-dir /tmp --logs-dir /tmp
 sleep 30
 TODAY=$(date +"%Y-%m-%d")
 
