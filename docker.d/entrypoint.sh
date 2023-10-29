@@ -5,8 +5,10 @@ MAIL=$EMAIL
 echo "start to renew cert from dnspod" 
 
 # create credentials.ini in /tmp directory
-echo "dnsDnspodApiId = $DNS_DNSPOD_API_ID" > /tmp/credentials.ini
-echo "dnsDnspodApiToken = $DNS_DNSPOD_API_TOKEN" >> /tmp/credentials.ini
+echo "dns_dnspod_api_id = $DNS_DNSPOD_API_ID" > /tmp/credentials.ini
+echo "dns_dnspod_api_token = $DNS_DNSPOD_API_TOKEN" >> /tmp/credentials.ini
+
+chmod 600 /tmp/credentials.ini
 
 certbot certonly --agree-tos -a dns-dnspod --dns-dnspod-credentials /tmp/credentials.ini --dns-dnspod-propagation-seconds 30 -d ${DOMAIN_NAME} -m ${MAIL} --no-eff-email --config-dir /tmp --work-dir /tmp --logs-dir /tmp
 sleep 30
