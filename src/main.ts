@@ -9,7 +9,7 @@ import { BashExecFunction } from './lambda-bash';
 
 export interface CertbotOptions {
   /**
-   * the domain must host on route53 like example.com.
+   * the domain must host on dnspod like example.com.
    *
    * @example - `*.example.com` or `a.example.com` .
    */

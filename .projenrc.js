@@ -27,11 +27,11 @@ const project = new awscdk.AwsCdkConstructLibrary({
   },
   autoApproveOptions: {
     secret: 'GITHUB_TOKEN',
-    allowedUsernames: ['neilkuan'],
+    allowedUsernames: ['timeswind'],
   },
   publishToPypi: {
     distName: 'cdk-certbot-dns-dnspod',
-    module: 'cdk_certbot_dns_route53',
+    module: 'cdk_certbot_dns_dnspod',
   },
   catalog: {
     announce: true,

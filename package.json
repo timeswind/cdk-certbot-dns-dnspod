@@ -123,7 +123,7 @@
     "targets": {
       "python": {
         "distName": "cdk-certbot-dns-dnspod",
-        "module": "cdk_certbot_dns_route53"
+        "module": "cdk_certbot_dns_dnspod"
       }
     },
     "tsc": {

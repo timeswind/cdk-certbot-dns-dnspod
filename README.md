@@ -25,10 +25,9 @@ npm install cdk-certbot-dns-dnspod@cdkv1
 💡💡💡 please click [here](https://github.com/timeswind/cdk-certbot-dns-dnspod/tree/cdkv1#readme), if you are using aws-cdk v1.x.x version.💡💡💡
 
 ```ts
-import * as r53 from 'aws-cdk-lib/aws-route53';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as cdk from 'aws-cdk-lib';
-import { CertbotDnsRoute53Job } from 'cdk-certbot-dns-dnspod';
+import { CertbotDnsDnspodJob } from 'cdk-certbot-dns-dnspod';
 
 const devEnv = {
   account: process.env.CDK_DEFAULT_ACCOUNT,
@@ -39,15 +38,13 @@ const app = new cdk.App();
 
 const stack = new cdk.Stack(app, 'lambda-certbot-dev', { env: devEnv });
 
-new CertbotDnsRoute53Job(stack, 'Demo', {
+new CertbotDnsDnspodJob(stack, 'Demo', {
   certbotOptions: {
     domainName: '*.example.com',
     email: 'user@example.com',
   },
-  zone: r53.HostedZone.fromHostedZoneAttributes(stack, 'myZone', {
-    zoneName: 'example.com',
-    hostedZoneId:  'mockId',
-  }),
+  dnsDnspodApiId: 'xxx',
+  dnsDnspodApiToken: 'xxx',
   destinationBucket: s3.Bucket.fromBucketName(stack, 'myBucket', 'mybucket'),
 });
 ```
@@ -55,11 +52,10 @@ new CertbotDnsRoute53Job(stack, 'Demo', {
 
 ### You can define Lambda Image Architecture now. 2022/04/19
 ```ts
-import * as r53 from 'aws-cdk-lib/aws-route53';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as cdk from 'aws-cdk-lib';
-import { CertbotDnsRoute53Job } from 'cdk-certbot-dns-dnspod';
+import { CertbotDnsDnspodJob } from 'cdk-certbot-dns-dnspod';
 
 const mockApp = new cdk.App();
 const stack = new cdk.Stack(mockApp, 'teststack', { env: devEnv });
@@ -67,13 +63,14 @@ const bucket = new s3.Bucket(stack, 'testingBucket');
 const zone = r53.HostedZone.fromHostedZoneAttributes(stack, 'zone', {
   zoneName: mock.zoneName, hostedZoneId: mock.zoneId,
 });
-new CertbotDnsRoute53Job(stack, 'Testtask', {
+new CertbotDnsDnspodJob(stack, 'Testtask', {
   certbotOptions: {
     domainName: 'example.com',
     email: 'user@example.com',
     customPrefixDirectory: '/',
   },
-  zone,
+  dnsDnspodApiId: 'xxx',
+  dnsDnspodApiToken: 'xxx',
   destinationBucket: bucket,
   schedule: events.Schedule.cron({ month: '2' }),
   architecture: lambda.Architecture.ARM_64, // <- like this way.

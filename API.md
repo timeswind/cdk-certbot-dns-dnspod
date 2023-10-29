@@ -266,7 +266,7 @@ public readonly domainName: string;
 
 - *Type:* `string`
 
-the domain must host on route53 like example.com.
+the domain must host on dnspod like example.com.
 
 ---
 
