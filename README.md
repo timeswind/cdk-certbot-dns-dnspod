@@ -41,7 +41,7 @@ const stack = new cdk.Stack(app, 'lambda-certbot-dev', { env: devEnv });
 new CertbotDnsDnspodJob(stack, 'Demo', {
   certbotOptions: {
     domainName: '*.example.com',
-    email: 'user@example.com',
+    email: 'user@example.com', // <- your email address and at same time is your dnspod account associate email.
   },
   dnsDnspodApiId: 'xxx',
   dnsDnspodApiToken: 'xxx',

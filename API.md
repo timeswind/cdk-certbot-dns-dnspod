@@ -278,7 +278,7 @@ public readonly email: string;
 
 - *Type:* `string`
 
-Email address for important account notifications.
+Email address associate with DNSPod account and for important account notifications.
 
 ---
 

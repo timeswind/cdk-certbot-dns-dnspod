@@ -5,8 +5,8 @@ MAIL=$EMAIL
 echo "start to renew cert from dnspod" 
 
 # create credentials.ini in /tmp directory
-echo "dns_dnspod_api_id = $DNS_DNSPOD_API_ID" > /tmp/credentials.ini
-echo "dns_dnspod_api_token = $DNS_DNSPOD_API_TOKEN" >> /tmp/credentials.ini
+echo "dns_dnspod_email = $EMAIL" > /tmp/credentials.ini
+echo "dns_dnspod_api_token = $dns_dnspod_api_id,$DNS_DNSPOD_API_TOKEN" >> /tmp/credentials.ini
 
 chmod 600 /tmp/credentials.ini
 

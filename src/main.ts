@@ -16,7 +16,7 @@ export interface CertbotOptions {
   readonly domainName: string;
 
   /**
-   * Email address for important account notifications.
+   * Email address associate with DNSPod account and for important account notifications.
    */
   readonly email: string;
 
