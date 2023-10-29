@@ -2,9 +2,7 @@ import * as path from 'path';
 import * as cdk from 'aws-cdk-lib';
 import * as events from 'aws-cdk-lib/aws-events';
 import * as target from 'aws-cdk-lib/aws-events-targets';
-import * as iam from 'aws-cdk-lib/aws-iam';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
-import * as r53 from 'aws-cdk-lib/aws-route53';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import { Construct } from 'constructs';
 import { BashExecFunction } from './lambda-bash';
@@ -33,7 +31,7 @@ export interface CertbotOptions {
   readonly customPrefixDirectory?: string;
 }
 
-export interface CertbotDnsRoute53JobProps {
+export interface CertbotDnsDnspodJobProps {
   /**
    * run the Job with defined schedule
    * @default - no shedule
@@ -46,9 +44,10 @@ export interface CertbotDnsRoute53JobProps {
   readonly destinationBucket: s3.IBucket;
 
   /**
-   * The HostZone on route53 to dns-01 challenge.
+   * The dnspod api id and token.
    */
-  readonly zone: r53.IHostedZone;
+  readonly dns_dnspod_api_id: string;
+  readonly dns_dnspod_api_token: string;
 
   /**
    * certbot cmd options.
@@ -63,17 +62,19 @@ export interface CertbotDnsRoute53JobProps {
   readonly architecture?: lambda.Architecture;
 }
 
-export class CertbotDnsRoute53Job extends Construct {
-  constructor(scope: Construct, id: string, props: CertbotDnsRoute53JobProps ) {
+export class CertbotDnsDnspodJob extends Construct {
+  constructor(scope: Construct, id: string, props: CertbotDnsDnspodJobProps) {
     super(scope, id);
     const certOptions = {
       BUCKET_NAME: props.destinationBucket.bucketName,
       EMAIL: props.certbotOptions.email,
       DOMAIN_NAME: props.certbotOptions.domainName,
       CUSTOM_PREFIX_DIRECTORY: props.certbotOptions.customPrefixDirectory!,
+      DNS_DNSPOD_API_ID: props.dns_dnspod_api_id,
+      DNS_DNSPOD_API_TOKEN: props.dns_dnspod_api_token,
     };
 
-    const lambdaFun = new BashExecFunction(this, 'certbotDnsRoute53JobLambda', {
+    const lambdaFun = new BashExecFunction(this, 'certbotDnsDnspodJobLambda', {
       script: path.join(__dirname, '../docker.d/entrypoint.sh'),
       timeout: cdk.Duration.minutes(5),
       architecture: props.architecture ?? lambda.Architecture.X86_64,
@@ -83,31 +84,6 @@ export class CertbotDnsRoute53Job extends Construct {
     });
 
     props.destinationBucket.grantReadWrite(lambdaFun.handler.role!);
-    const route53PolicyJsonList = [{
-      Effect: 'Allow',
-      Action: [
-        'route53:ListHostedZones',
-        'route53:GetChange',
-      ],
-      Resource: [
-        '*',
-      ],
-    },
-    {
-      Effect: 'Allow',
-      Action: [
-        'route53:ChangeResourceRecordSets',
-      ],
-      Resource: [
-        `arn:${new cdk.ScopedAws(this).partition}:route53:::hostedzone/${props.zone.hostedZoneId}`,
-      ],
-    }];
-    route53PolicyJsonList.forEach(
-      e => {
-        lambdaFun.handler.role!.addToPrincipalPolicy(iam.PolicyStatement.fromJson(e));
-      },
-    );
-
 
     if (props.schedule) {
       new events.Rule(this, 'ScheduleRule', {

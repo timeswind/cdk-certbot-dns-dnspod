@@ -2,32 +2,30 @@ import * as cdk from 'aws-cdk-lib';
 import * as assertions from 'aws-cdk-lib/assertions';
 import * as events from 'aws-cdk-lib/aws-events';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
-import * as r53 from 'aws-cdk-lib/aws-route53';
 import * as s3 from 'aws-cdk-lib/aws-s3';
-import { CertbotDnsRoute53Job } from '../src/index';
+import { CertbotDnsDnspodJob } from '../src/index';
 const devEnv = {
   account: '1234567890xx',
   region: 'ap-northeast-1',
 };
 
 const mock = {
-  zoneId: 'XXXXXXXXXXXXX',
-  zoneName: 'example.com',
+  dns_dnspod_api_id: 'XXXXXXXXXXXXX',
+  dns_dnspod_api_token: 'XXXXXXXXXXXXX',
 };
 
 test('only create certbot lambda.', () => {
   const mockApp = new cdk.App();
   const stack = new cdk.Stack(mockApp, 'teststack', { env: devEnv });
   const bucket = new s3.Bucket(stack, 'testingBucket');
-  const zone = r53.HostedZone.fromHostedZoneAttributes(stack, 'zone', {
-    zoneName: mock.zoneName, hostedZoneId: mock.zoneId,
-  });
-  new CertbotDnsRoute53Job(stack, 'Testtask', {
+
+  new CertbotDnsDnspodJob(stack, 'Testtask', {
     certbotOptions: {
       domainName: 'example.com',
       email: 'user@example.com',
     },
-    zone,
+    dns_dnspod_api_id: mock.dns_dnspod_api_id,
+    dns_dnspod_api_token: mock.dns_dnspod_api_token,
     destinationBucket: bucket,
   });
   assertions.Template.fromStack(stack).hasResourceProperties('AWS::Lambda::Function', {
@@ -63,15 +61,14 @@ test('create certbot lambda schedule rule.', () => {
   const mockApp = new cdk.App();
   const stack = new cdk.Stack(mockApp, 'teststack', { env: devEnv });
   const bucket = new s3.Bucket(stack, 'testingBucket');
-  const zone = r53.HostedZone.fromHostedZoneAttributes(stack, 'zone', {
-    zoneName: mock.zoneName, hostedZoneId: mock.zoneId,
-  });
-  new CertbotDnsRoute53Job(stack, 'Testtask', {
+
+  new CertbotDnsDnspodJob(stack, 'Testtask', {
     certbotOptions: {
       domainName: 'example.com',
       email: 'user@example.com',
     },
-    zone,
+    dns_dnspod_api_id: mock.dns_dnspod_api_id,
+    dns_dnspod_api_token: mock.dns_dnspod_api_token,
     destinationBucket: bucket,
     schedule: events.Schedule.cron({ month: '2' }),
   });
@@ -109,7 +106,7 @@ test('create certbot lambda schedule rule.', () => {
       {
         Arn: {
           'Fn::GetAtt': [
-            'TesttaskcertbotDnsRoute53JobLambdaBashExecFunction83E58B7B',
+            'TesttaskcertbotDnsDnspodJobLambdaBashExecFunction56719535',
             'Arn',
           ],
         },
@@ -123,16 +120,15 @@ test('test right customPrefixDirectory.', () => {
   const mockApp = new cdk.App();
   const stack = new cdk.Stack(mockApp, 'teststack', { env: devEnv });
   const bucket = new s3.Bucket(stack, 'testingBucket');
-  const zone = r53.HostedZone.fromHostedZoneAttributes(stack, 'zone', {
-    zoneName: mock.zoneName, hostedZoneId: mock.zoneId,
-  });
-  new CertbotDnsRoute53Job(stack, 'Testtask', {
+
+  new CertbotDnsDnspodJob(stack, 'Testtask', {
     certbotOptions: {
       domainName: 'example.com',
       email: 'user@example.com',
       customPrefixDirectory: 'abc',
     },
-    zone,
+    dns_dnspod_api_id: mock.dns_dnspod_api_id,
+    dns_dnspod_api_token: mock.dns_dnspod_api_token,
     destinationBucket: bucket,
     schedule: events.Schedule.cron({ month: '2' }),
   });
@@ -154,16 +150,15 @@ test('test right / path customPrefixDirectory.', () => {
   const mockApp = new cdk.App();
   const stack = new cdk.Stack(mockApp, 'teststack', { env: devEnv });
   const bucket = new s3.Bucket(stack, 'testingBucket');
-  const zone = r53.HostedZone.fromHostedZoneAttributes(stack, 'zone', {
-    zoneName: mock.zoneName, hostedZoneId: mock.zoneId,
-  });
-  new CertbotDnsRoute53Job(stack, 'Testtask', {
+
+  new CertbotDnsDnspodJob(stack, 'Testtask', {
     certbotOptions: {
       domainName: 'example.com',
       email: 'user@example.com',
       customPrefixDirectory: '/',
     },
-    zone,
+    dns_dnspod_api_id: mock.dns_dnspod_api_id,
+    dns_dnspod_api_token: mock.dns_dnspod_api_token,
     destinationBucket: bucket,
     schedule: events.Schedule.cron({ month: '2' }),
   });
@@ -185,16 +180,15 @@ test('test define right Lambda Image Architecture x86_64', () => {
   const mockApp = new cdk.App();
   const stack = new cdk.Stack(mockApp, 'teststack', { env: devEnv });
   const bucket = new s3.Bucket(stack, 'testingBucket');
-  const zone = r53.HostedZone.fromHostedZoneAttributes(stack, 'zone', {
-    zoneName: mock.zoneName, hostedZoneId: mock.zoneId,
-  });
-  new CertbotDnsRoute53Job(stack, 'Testtask', {
+
+  new CertbotDnsDnspodJob(stack, 'Testtask', {
     certbotOptions: {
       domainName: 'example.com',
       email: 'user@example.com',
       customPrefixDirectory: '/',
     },
-    zone,
+    dns_dnspod_api_id: mock.dns_dnspod_api_id,
+    dns_dnspod_api_token: mock.dns_dnspod_api_token,
     destinationBucket: bucket,
     schedule: events.Schedule.cron({ month: '2' }),
     architecture: lambda.Architecture.X86_64,
@@ -220,16 +214,15 @@ test('test define right Lambda Image Architecture arm64', () => {
   const mockApp = new cdk.App();
   const stack = new cdk.Stack(mockApp, 'teststack', { env: devEnv });
   const bucket = new s3.Bucket(stack, 'testingBucket');
-  const zone = r53.HostedZone.fromHostedZoneAttributes(stack, 'zone', {
-    zoneName: mock.zoneName, hostedZoneId: mock.zoneId,
-  });
-  new CertbotDnsRoute53Job(stack, 'Testtask', {
+
+  new CertbotDnsDnspodJob(stack, 'Testtask', {
     certbotOptions: {
       domainName: 'example.com',
       email: 'user@example.com',
       customPrefixDirectory: '/',
     },
-    zone,
+    dns_dnspod_api_id: mock.dns_dnspod_api_id,
+    dns_dnspod_api_token: mock.dns_dnspod_api_token,
     destinationBucket: bucket,
     schedule: events.Schedule.cron({ month: '2' }),
     architecture: lambda.Architecture.ARM_64,
